@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StxOS</title>
+        <link rel="stylesheet" href="/css/stxcss.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="topbar">
+            <a class="btn-nav btn-home" app="Home" href="#/Home">StxOS</a>
+        </div>
+        <div id="mainView">
+        </div>
+        <footer class="botbar">I wonder how the Hell did you ended here !</footer>
+    </body>
+    <script type="application/javascript" src="/js/modules.js"></script>
+    <script>
+        $('#mainView').load('/partials/Home.html');
+        
+        if(typeof(Storage) !== "undefined") {
+            cl = localStorage.getItem("skin");
+            
+            $('.topbar').toggleClass(cl);
+            $('.botbar').toggleClass(cl);
+        }
+        
+        $('.btn-skin').click(function(){
+            $('.topbar').toggleClass("ninja");
+            $('.botbar').toggleClass("ninja");
+            
+            if(typeof(Storage) !== "undefined") {
+                if($('.topbar').hasClass("ninja")){
+                    localStorage.setItem("skin", "ninja");
+                } else {
+                    localStorage.setItem("skin", "standard");                    
+                }
+            }
+        });
+    </script>
+</html>
